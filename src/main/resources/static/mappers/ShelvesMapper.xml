@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuke.wuliu.dao.ShelvesMapper">
+  <resultMap id="BaseResultMap" type="com.kuke.wuliu.pojo.Shelves">
+    <id column="shelves_id" jdbcType="INTEGER" property="shelvesId" />
+    <result column="shelves_spartitionId" jdbcType="INTEGER" property="shelvesSpartitionid" />
+    <result column="shelves_name" jdbcType="VARCHAR" property="shelvesName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    shelves_id, shelves_spartitionId, shelves_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shelves
+    where shelves_id = #{shelvesId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shelves
+    where shelves_id = #{shelvesId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kuke.wuliu.pojo.Shelves">
+    insert into shelves (shelves_id, shelves_spartitionId, shelves_name
+      )
+    values (#{shelvesId,jdbcType=INTEGER}, #{shelvesSpartitionid,jdbcType=INTEGER}, #{shelvesName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kuke.wuliu.pojo.Shelves">
+    insert into shelves
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shelvesId != null">
+        shelves_id,
+      </if>
+      <if test="shelvesSpartitionid != null">
+        shelves_spartitionId,
+      </if>
+      <if test="shelvesName != null">
+        shelves_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shelvesId != null">
+        #{shelvesId,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesSpartitionid != null">
+        #{shelvesSpartitionid,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesName != null">
+        #{shelvesName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuke.wuliu.pojo.Shelves">
+    update shelves
+    <set>
+      <if test="shelvesSpartitionid != null">
+        shelves_spartitionId = #{shelvesSpartitionid,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesName != null">
+        shelves_name = #{shelvesName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where shelves_id = #{shelvesId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kuke.wuliu.pojo.Shelves">
+    update shelves
+    set shelves_spartitionId = #{shelvesSpartitionid,jdbcType=INTEGER},
+      shelves_name = #{shelvesName,jdbcType=VARCHAR}
+    where shelves_id = #{shelvesId,jdbcType=INTEGER}
+  </update>
+</mapper>

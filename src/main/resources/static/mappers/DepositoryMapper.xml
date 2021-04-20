@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuke.wuliu.dao.DepositoryMapper">
+  <resultMap id="BaseResultMap" type="com.kuke.wuliu.pojo.Depository">
+    <id column="depository_id" jdbcType="INTEGER" property="depositoryId" />
+    <result column="depository_name" jdbcType="VARCHAR" property="depositoryName" />
+    <result column="depository_address" jdbcType="VARCHAR" property="depositoryAddress" />
+    <result column="depository_receiverName" jdbcType="VARCHAR" property="depositoryReceivername" />
+    <result column="depository_phone" jdbcType="VARCHAR" property="depositoryPhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    depository_id, depository_name, depository_address, depository_receiverName, depository_phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from depository
+    where depository_id = #{depositoryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from depository
+    where depository_id = #{depositoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kuke.wuliu.pojo.Depository">
+    insert into depository (depository_id, depository_name, depository_address, 
+      depository_receiverName, depository_phone
+      )
+    values (#{depositoryId,jdbcType=INTEGER}, #{depositoryName,jdbcType=VARCHAR}, #{depositoryAddress,jdbcType=VARCHAR}, 
+      #{depositoryReceivername,jdbcType=VARCHAR}, #{depositoryPhone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kuke.wuliu.pojo.Depository">
+    insert into depository
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="depositoryId != null">
+        depository_id,
+      </if>
+      <if test="depositoryName != null">
+        depository_name,
+      </if>
+      <if test="depositoryAddress != null">
+        depository_address,
+      </if>
+      <if test="depositoryReceivername != null">
+        depository_receiverName,
+      </if>
+      <if test="depositoryPhone != null">
+        depository_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="depositoryId != null">
+        #{depositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="depositoryName != null">
+        #{depositoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryAddress != null">
+        #{depositoryAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryReceivername != null">
+        #{depositoryReceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryPhone != null">
+        #{depositoryPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuke.wuliu.pojo.Depository">
+    update depository
+    <set>
+      <if test="depositoryName != null">
+        depository_name = #{depositoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryAddress != null">
+        depository_address = #{depositoryAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryReceivername != null">
+        depository_receiverName = #{depositoryReceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="depositoryPhone != null">
+        depository_phone = #{depositoryPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where depository_id = #{depositoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kuke.wuliu.pojo.Depository">
+    update depository
+    set depository_name = #{depositoryName,jdbcType=VARCHAR},
+      depository_address = #{depositoryAddress,jdbcType=VARCHAR},
+      depository_receiverName = #{depositoryReceivername,jdbcType=VARCHAR},
+      depository_phone = #{depositoryPhone,jdbcType=VARCHAR}
+    where depository_id = #{depositoryId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuke.wuliu.dao.SpartitionMapper">
+  <resultMap id="BaseResultMap" type="com.kuke.wuliu.pojo.Spartition">
+    <id column="spartition_id" jdbcType="INTEGER" property="spartitionId" />
+    <result column="spartition_fpartitionId" jdbcType="INTEGER" property="spartitionFpartitionid" />
+    <result column="spartition_name" jdbcType="VARCHAR" property="spartitionName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    spartition_id, spartition_fpartitionId, spartition_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spartition
+    where spartition_id = #{spartitionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spartition
+    where spartition_id = #{spartitionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.kuke.wuliu.pojo.Spartition">
+    insert into spartition (spartition_id, spartition_fpartitionId, 
+      spartition_name)
+    values (#{spartitionId,jdbcType=INTEGER}, #{spartitionFpartitionid,jdbcType=INTEGER}, 
+      #{spartitionName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kuke.wuliu.pojo.Spartition">
+    insert into spartition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spartitionId != null">
+        spartition_id,
+      </if>
+      <if test="spartitionFpartitionid != null">
+        spartition_fpartitionId,
+      </if>
+      <if test="spartitionName != null">
+        spartition_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spartitionId != null">
+        #{spartitionId,jdbcType=INTEGER},
+      </if>
+      <if test="spartitionFpartitionid != null">
+        #{spartitionFpartitionid,jdbcType=INTEGER},
+      </if>
+      <if test="spartitionName != null">
+        #{spartitionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kuke.wuliu.pojo.Spartition">
+    update spartition
+    <set>
+      <if test="spartitionFpartitionid != null">
+        spartition_fpartitionId = #{spartitionFpartitionid,jdbcType=INTEGER},
+      </if>
+      <if test="spartitionName != null">
+        spartition_name = #{spartitionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where spartition_id = #{spartitionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kuke.wuliu.pojo.Spartition">
+    update spartition
+    set spartition_fpartitionId = #{spartitionFpartitionid,jdbcType=INTEGER},
+      spartition_name = #{spartitionName,jdbcType=VARCHAR}
+    where spartition_id = #{spartitionId,jdbcType=INTEGER}
+  </update>
+</mapper>
