@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class TestController {
+public class LoginController {
     @Autowired
     LoginCheck loginCheck;
     //登录验证
