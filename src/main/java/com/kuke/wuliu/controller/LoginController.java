@@ -28,5 +28,6 @@ public class LoginController {
             mav.addObject("errorInfo","用户名或密码错误！");
         }
         return mav;
+
 }
 }
