@@ -5,9 +5,16 @@
     <id column="fpartition_id" jdbcType="INTEGER" property="fpartitionId" />
     <result column="fpartition_depositoryId" jdbcType="INTEGER" property="fpartitionDepositoryid" />
     <result column="fpartition_name" jdbcType="VARCHAR" property="fpartitionName" />
+    <result column="fpartition_number" jdbcType="VARCHAR" property="fpartitionNumber" />
+    <result column="fpartition_minWeight" jdbcType="REAL" property="fpartitionMinweight" />
+    <result column="fpartiton_maxWeight" jdbcType="REAL" property="fpartitonMaxweight" />
+    <result column="fpartition_sort" jdbcType="INTEGER" property="fpartitionSort" />
+    <result column="fpartition_state" jdbcType="INTEGER" property="fpartitionState" />
+    <result column="fpartition_remarks" jdbcType="VARCHAR" property="fpartitionRemarks" />
   </resultMap>
   <sql id="Base_Column_List">
-    fpartition_id, fpartition_depositoryId, fpartition_name
+    fpartition_id, fpartition_depositoryId, fpartition_name, fpartition_number, fpartition_minWeight, 
+    fpartiton_maxWeight, fpartition_sort, fpartition_state, fpartition_remarks
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -21,9 +28,13 @@
   </delete>
   <insert id="insert" parameterType="com.kuke.wuliu.pojo.Fpartition">
     insert into fpartition (fpartition_id, fpartition_depositoryId, 
-      fpartition_name)
+      fpartition_name, fpartition_number, fpartition_minWeight, 
+      fpartiton_maxWeight, fpartition_sort, fpartition_state, 
+      fpartition_remarks)
     values (#{fpartitionId,jdbcType=INTEGER}, #{fpartitionDepositoryid,jdbcType=INTEGER}, 
-      #{fpartitionName,jdbcType=VARCHAR})
+      #{fpartitionName,jdbcType=VARCHAR}, #{fpartitionNumber,jdbcType=VARCHAR}, #{fpartitionMinweight,jdbcType=REAL}, 
+      #{fpartitonMaxweight,jdbcType=REAL}, #{fpartitionSort,jdbcType=INTEGER}, #{fpartitionState,jdbcType=INTEGER}, 
+      #{fpartitionRemarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kuke.wuliu.pojo.Fpartition">
     insert into fpartition
@@ -37,6 +48,24 @@
       <if test="fpartitionName != null">
         fpartition_name,
       </if>
+      <if test="fpartitionNumber != null">
+        fpartition_number,
+      </if>
+      <if test="fpartitionMinweight != null">
+        fpartition_minWeight,
+      </if>
+      <if test="fpartitonMaxweight != null">
+        fpartiton_maxWeight,
+      </if>
+      <if test="fpartitionSort != null">
+        fpartition_sort,
+      </if>
+      <if test="fpartitionState != null">
+        fpartition_state,
+      </if>
+      <if test="fpartitionRemarks != null">
+        fpartition_remarks,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="fpartitionId != null">
@@ -47,6 +76,24 @@
       </if>
       <if test="fpartitionName != null">
         #{fpartitionName,jdbcType=VARCHAR},
+      </if>
+      <if test="fpartitionNumber != null">
+        #{fpartitionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fpartitionMinweight != null">
+        #{fpartitionMinweight,jdbcType=REAL},
+      </if>
+      <if test="fpartitonMaxweight != null">
+        #{fpartitonMaxweight,jdbcType=REAL},
+      </if>
+      <if test="fpartitionSort != null">
+        #{fpartitionSort,jdbcType=INTEGER},
+      </if>
+      <if test="fpartitionState != null">
+        #{fpartitionState,jdbcType=INTEGER},
+      </if>
+      <if test="fpartitionRemarks != null">
+        #{fpartitionRemarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -59,13 +106,37 @@
       <if test="fpartitionName != null">
         fpartition_name = #{fpartitionName,jdbcType=VARCHAR},
       </if>
+      <if test="fpartitionNumber != null">
+        fpartition_number = #{fpartitionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fpartitionMinweight != null">
+        fpartition_minWeight = #{fpartitionMinweight,jdbcType=REAL},
+      </if>
+      <if test="fpartitonMaxweight != null">
+        fpartiton_maxWeight = #{fpartitonMaxweight,jdbcType=REAL},
+      </if>
+      <if test="fpartitionSort != null">
+        fpartition_sort = #{fpartitionSort,jdbcType=INTEGER},
+      </if>
+      <if test="fpartitionState != null">
+        fpartition_state = #{fpartitionState,jdbcType=INTEGER},
+      </if>
+      <if test="fpartitionRemarks != null">
+        fpartition_remarks = #{fpartitionRemarks,jdbcType=VARCHAR},
+      </if>
     </set>
     where fpartition_id = #{fpartitionId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kuke.wuliu.pojo.Fpartition">
     update fpartition
     set fpartition_depositoryId = #{fpartitionDepositoryid,jdbcType=INTEGER},
-      fpartition_name = #{fpartitionName,jdbcType=VARCHAR}
+      fpartition_name = #{fpartitionName,jdbcType=VARCHAR},
+      fpartition_number = #{fpartitionNumber,jdbcType=VARCHAR},
+      fpartition_minWeight = #{fpartitionMinweight,jdbcType=REAL},
+      fpartiton_maxWeight = #{fpartitonMaxweight,jdbcType=REAL},
+      fpartition_sort = #{fpartitionSort,jdbcType=INTEGER},
+      fpartition_state = #{fpartitionState,jdbcType=INTEGER},
+      fpartition_remarks = #{fpartitionRemarks,jdbcType=VARCHAR}
     where fpartition_id = #{fpartitionId,jdbcType=INTEGER}
   </update>
 </mapper>

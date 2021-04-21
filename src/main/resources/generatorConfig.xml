@@ -37,7 +37,6 @@
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
         <table tableName="depository" domainObjectName="Depository" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
         <table tableName="fpartition" domainObjectName="Fpartition" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
-        <table tableName="spartition" domainObjectName="Spartition" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
         <table tableName="shelves" domainObjectName="Shelves" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" enableSelectByPrimaryKey="true" enableDeleteByPrimaryKey="true" enableUpdateByPrimaryKey="true"/>
     </context>
 </generatorConfiguration>

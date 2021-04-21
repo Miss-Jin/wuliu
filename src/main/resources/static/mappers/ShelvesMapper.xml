@@ -3,11 +3,17 @@
 <mapper namespace="com.kuke.wuliu.dao.ShelvesMapper">
   <resultMap id="BaseResultMap" type="com.kuke.wuliu.pojo.Shelves">
     <id column="shelves_id" jdbcType="INTEGER" property="shelvesId" />
-    <result column="shelves_spartitionId" jdbcType="INTEGER" property="shelvesSpartitionid" />
+    <result column="shelves_fpartitionId" jdbcType="INTEGER" property="shelvesFpartitionid" />
     <result column="shelves_name" jdbcType="VARCHAR" property="shelvesName" />
+    <result column="shelves_remarks" jdbcType="VARCHAR" property="shelvesRemarks" />
+    <result column="shelves_sort" jdbcType="INTEGER" property="shelvesSort" />
+    <result column="shelves_state" jdbcType="INTEGER" property="shelvesState" />
+    <result column="shelves_storage" jdbcType="INTEGER" property="shelvesStorage" />
+    <result column="shelves_size" jdbcType="VARCHAR" property="shelvesSize" />
   </resultMap>
   <sql id="Base_Column_List">
-    shelves_id, shelves_spartitionId, shelves_name
+    shelves_id, shelves_fpartitionId, shelves_name, shelves_remarks, shelves_sort, shelves_state, 
+    shelves_storage, shelves_size
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,10 +26,12 @@
     where shelves_id = #{shelvesId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.kuke.wuliu.pojo.Shelves">
-    insert into shelves (shelves_id, shelves_spartitionId, shelves_name
-      )
-    values (#{shelvesId,jdbcType=INTEGER}, #{shelvesSpartitionid,jdbcType=INTEGER}, #{shelvesName,jdbcType=VARCHAR}
-      )
+    insert into shelves (shelves_id, shelves_fpartitionId, shelves_name, 
+      shelves_remarks, shelves_sort, shelves_state, 
+      shelves_storage, shelves_size)
+    values (#{shelvesId,jdbcType=INTEGER}, #{shelvesFpartitionid,jdbcType=INTEGER}, #{shelvesName,jdbcType=VARCHAR}, 
+      #{shelvesRemarks,jdbcType=VARCHAR}, #{shelvesSort,jdbcType=INTEGER}, #{shelvesState,jdbcType=INTEGER}, 
+      #{shelvesStorage,jdbcType=INTEGER}, #{shelvesSize,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kuke.wuliu.pojo.Shelves">
     insert into shelves
@@ -31,41 +39,91 @@
       <if test="shelvesId != null">
         shelves_id,
       </if>
-      <if test="shelvesSpartitionid != null">
-        shelves_spartitionId,
+      <if test="shelvesFpartitionid != null">
+        shelves_fpartitionId,
       </if>
       <if test="shelvesName != null">
         shelves_name,
+      </if>
+      <if test="shelvesRemarks != null">
+        shelves_remarks,
+      </if>
+      <if test="shelvesSort != null">
+        shelves_sort,
+      </if>
+      <if test="shelvesState != null">
+        shelves_state,
+      </if>
+      <if test="shelvesStorage != null">
+        shelves_storage,
+      </if>
+      <if test="shelvesSize != null">
+        shelves_size,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="shelvesId != null">
         #{shelvesId,jdbcType=INTEGER},
       </if>
-      <if test="shelvesSpartitionid != null">
-        #{shelvesSpartitionid,jdbcType=INTEGER},
+      <if test="shelvesFpartitionid != null">
+        #{shelvesFpartitionid,jdbcType=INTEGER},
       </if>
       <if test="shelvesName != null">
         #{shelvesName,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesRemarks != null">
+        #{shelvesRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesSort != null">
+        #{shelvesSort,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesState != null">
+        #{shelvesState,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesStorage != null">
+        #{shelvesStorage,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesSize != null">
+        #{shelvesSize,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.kuke.wuliu.pojo.Shelves">
     update shelves
     <set>
-      <if test="shelvesSpartitionid != null">
-        shelves_spartitionId = #{shelvesSpartitionid,jdbcType=INTEGER},
+      <if test="shelvesFpartitionid != null">
+        shelves_fpartitionId = #{shelvesFpartitionid,jdbcType=INTEGER},
       </if>
       <if test="shelvesName != null">
         shelves_name = #{shelvesName,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesRemarks != null">
+        shelves_remarks = #{shelvesRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesSort != null">
+        shelves_sort = #{shelvesSort,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesState != null">
+        shelves_state = #{shelvesState,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesStorage != null">
+        shelves_storage = #{shelvesStorage,jdbcType=INTEGER},
+      </if>
+      <if test="shelvesSize != null">
+        shelves_size = #{shelvesSize,jdbcType=VARCHAR},
       </if>
     </set>
     where shelves_id = #{shelvesId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kuke.wuliu.pojo.Shelves">
     update shelves
-    set shelves_spartitionId = #{shelvesSpartitionid,jdbcType=INTEGER},
-      shelves_name = #{shelvesName,jdbcType=VARCHAR}
+    set shelves_fpartitionId = #{shelvesFpartitionid,jdbcType=INTEGER},
+      shelves_name = #{shelvesName,jdbcType=VARCHAR},
+      shelves_remarks = #{shelvesRemarks,jdbcType=VARCHAR},
+      shelves_sort = #{shelvesSort,jdbcType=INTEGER},
+      shelves_state = #{shelvesState,jdbcType=INTEGER},
+      shelves_storage = #{shelvesStorage,jdbcType=INTEGER},
+      shelves_size = #{shelvesSize,jdbcType=VARCHAR}
     where shelves_id = #{shelvesId,jdbcType=INTEGER}
   </update>
 </mapper>
