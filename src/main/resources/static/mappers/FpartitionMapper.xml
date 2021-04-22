@@ -16,6 +16,13 @@
     fpartition_id, fpartition_depositoryId, fpartition_name, fpartition_number, fpartition_minWeight, 
     fpartiton_maxWeight, fpartition_sort, fpartition_state, fpartition_remarks
   </sql>
+<!--  根据depid查记录-->
+  <select id="selectByDepId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from fpartition
+    where fpartition_depositoryId = #{fpartitionDepositoryid,jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

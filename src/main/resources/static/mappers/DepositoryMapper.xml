@@ -11,6 +11,13 @@
   <sql id="Base_Column_List">
     depository_id, depository_name, depository_address, depository_receiverName, depository_phone
   </sql>
+  <!--  根据depository_name  查询-->
+  <select id="selectByDepositoryName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from depository
+    where depository_name = #{depositoryName,jdbcType=VARCHAR}
+  </select>
 <!--  查询所有记录-->
   <select id="selectAll" resultMap="BaseResultMap">
     select * from depository

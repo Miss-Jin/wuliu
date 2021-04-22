@@ -2,8 +2,11 @@ package com.kuke.wuliu.service;
 
 import com.kuke.wuliu.dao.DepositoryMapper;
 import com.kuke.wuliu.dao.FpartitionMapper;
+import com.kuke.wuliu.dao.ShelvesMapper;
 import com.kuke.wuliu.pojo.Depository;
 import com.kuke.wuliu.pojo.Fpartition;
+import com.kuke.wuliu.pojo.Shelves;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ public class CrudServer {
     DepositoryMapper depositoryMapper;
     @Autowired
     FpartitionMapper fpartitionMapper;
+    @Autowired
+    ShelvesMapper shelvesMapper;
     //一.Depository（仓库对象CRUD）
     //1.1查询所有仓库记录，封装成List
     public List<Depository> selectAllDepository(){
@@ -62,4 +67,30 @@ public class CrudServer {
             return "添加失败！";
         }
     }
+
+    public String insertShelves(Integer s_fid, String s_name, String s_remark, Integer s_sort,Integer s_state,Integer s_storage,String s_size){
+        Shelves shelves = new Shelves();
+        shelves.setShelvesFpartitionid(s_fid);
+        shelves.setShelvesName(s_name);
+        shelves.setShelvesRemarks(s_remark);
+        shelves.setShelvesSort(s_sort);
+        shelves.setShelvesState(s_state);
+        shelves.setShelvesStorage(s_storage);
+        shelves.setShelvesSize(s_size);
+        int result = shelvesMapper.insert(shelves);
+        if (result != 0){
+            return "添加成功！";
+        }
+        else {
+            return "添加失败！";
+        }
+    }
+
+    //根据dep_name查所有分区记录
+    public List<Fpartition> selectAllFpartitionByDepName(String dep_name){
+        Depository depository = depositoryMapper.selectByDepositoryName(dep_name);
+        List<Fpartition> fpartitions = fpartitionMapper.selectByDepId(depository.getDepositoryId());
+        return fpartitions;
+    }
+
 }

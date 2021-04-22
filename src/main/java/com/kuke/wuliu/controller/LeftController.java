@@ -27,9 +27,10 @@ public class LeftController {
     @GetMapping("/shelves_info_submit")
     public ModelAndView showShelvesSubmit(){
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("shelves_info_submit");//        List<Depository> depositories = crudServer.selectAllDepository();
-//        mav.addObject("list_dep",depositories);
-//        System.out.println(depositories);
+        mav.setViewName("shelves_info_submit");
+        List<Depository> depositories = crudServer.selectAllDepository();
+        mav.addObject("list_dep",depositories);
+        System.out.println(depositories);
         return mav;
     }
 

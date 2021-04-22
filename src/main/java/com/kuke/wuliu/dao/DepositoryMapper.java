@@ -15,6 +15,8 @@ public interface DepositoryMapper {
 
     Depository selectByPrimaryKey(Integer depositoryId);
 
+    Depository selectByDepositoryName(String depName);
+
     List<Depository> selectAll();
 
     int updateByPrimaryKeySelective(Depository record);
