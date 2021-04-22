@@ -17,8 +17,9 @@
         text-align: center;
     }
     .div_two{
-        width: 70%;
+        width: 60%;
         text-align: left;
+        margin:0 auto;
     }
     .one{
         width: 200px;
@@ -27,28 +28,51 @@
     }
     label{
         margin-top: 50px;
+        height:50px;
+        line-height:50px;
+
+    }
+    .three{
+        width: 100px;
+        text-align: right;
+        display: inline-block;
+    }
+    .four{
+        width: 60%;
+        height: 50px;
+        text-align: right;
+        display: inline-block;
+        float:right;
+    }
+    .five{
+        width: 50%;
+        height: 50px;
+        text-align: right;
+        display: inline-block;
+        float:right;
     }
 </style>
 <body>
     <div class="div_one">
         <div class="div_two">
             <form method="get" action="/insert_fpartition">
-                <label>仓库：</label>
+                <div class="three">
+                <label>仓库：</label></div>
                 <select class="one" name="fpartition_Depid">
                     <option th:each="dep: ${list_dep}" th:value="${dep.getDepositoryId()}" th:text="${dep.getDepositoryName()}"></option>
                 </select>
-                <label>区域名称：</label><input class="1111" type="text" name="fpartition_Name"/><br>
-                <label>区域编号：</label><input class="one" type="text" name="fpartition_Number"/><br>
-                <label>最小重量：</label><input class="one" type="text" name="fpartition_Minweight"/>
-                <label>最大重量：</label><input class="one" type="text" name="fpartiton_Maxweight"/><br>
-                <label>备注：</label><textarea class="one" name="fpartition_Remarks"></textarea><br>
-                <label>排序值：</label><input class="one" type="text" name="fpartition_Sort">越大越靠前
-                <label>状态：</label><select class="one" name="fpartition_State">
+                <div class="four"><label>区域名称：</label><input class="one" type="text" name="fpartition_Name"/></div><br>
+                <div class="three"><label>区域编号：</label></div><input class="one" type="text" name="fpartition_Number"/><br>
+                <div class="three"><label>最小重量：</label></div><input class="one" type="text" name="fpartition_Minweight"/>
+                <div class="four"><label>最大重量：</label><input class="one" type="text" name="fpartiton_Maxweight"/></div><br>
+                <div class="three"><label>备注：</label></div><textarea class="one" style="vertical-align:top" name="fpartition_Remarks"></textarea><br>
+                <div class="three"><label>排序值：</label></div><input class="one" type="text" name="fpartition_Sort">越大越靠前
+                <div class="five"><label>状态：</label><select class="one" name="fpartition_State">
                 <option value="1">有效</option>
                 <option value="0">无效</option>
-                </select>
+                </select></div>
                 <br>
-                <input class="btn btn-info" type="submit" value="提交"><br>
+                <input class="btn btn-info" type="submit" style="width: 100px;top: 40px" value="提交"><br>
             </form>
         </div>
     </div>
