@@ -10,10 +10,15 @@
 <div class="div_one">
     <div class="div_two">
         <form method="get" action="/insert_fpartition">
-            <label>货架区域：</label>
+            <label>仓库：</label>
             <select class="form-control" name="fpartition_Depid">
 <!--                <option th:each="dep: ${list_dep}" th:value="${dep.getDepositoryId()}"-->
 <!--                        th:text="${dep.getDepositoryName()}"></option>-->
+            </select>
+            <label>区域：</label>
+            <select class="form-control" name="fpartition_Depid">
+                <!--                <option th:each="dep: ${list_dep}" th:value="${dep.getDepositoryId()}"-->
+                <!--                        th:text="${dep.getDepositoryName()}"></option>-->
             </select>
             <label>货架号：</label><input class="one" type="text" name="fpartition_Name"/><br>
             <label>备注：</label><input class="one" type="text" name="fpartition_Number"/><br>
