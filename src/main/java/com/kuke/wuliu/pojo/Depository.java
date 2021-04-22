@@ -50,4 +50,15 @@ public class Depository {
     public void setDepositoryPhone(String depositoryPhone) {
         this.depositoryPhone = depositoryPhone == null ? null : depositoryPhone.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Depository{" +
+                "depositoryId=" + depositoryId +
+                ", depositoryName='" + depositoryName + '\'' +
+                ", depositoryAddress='" + depositoryAddress + '\'' +
+                ", depositoryReceivername='" + depositoryReceivername + '\'' +
+                ", depositoryPhone='" + depositoryPhone + '\'' +
+                '}';
+    }
 }

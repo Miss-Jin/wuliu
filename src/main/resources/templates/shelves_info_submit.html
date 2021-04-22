@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>货架信息添加</title>
+    <link rel="stylesheet" href="../application/css/bootstrap.min.css">
+</head>
+<body>
+<div class="div_one">
+    <div class="div_two">
+        <form method="get" action="/insert_fpartition">
+            <label>货架区域：</label>
+            <select class="form-control" name="fpartition_Depid">
+<!--                <option th:each="dep: ${list_dep}" th:value="${dep.getDepositoryId()}"-->
+<!--                        th:text="${dep.getDepositoryName()}"></option>-->
+            </select>
+            <label>货架号：</label><input class="one" type="text" name="fpartition_Name"/><br>
+            <label>备注：</label><input class="one" type="text" name="fpartition_Number"/><br>
+            <label>储物：</label>
+            <select class="one" name="fpartition_Depid">
+                <option value="1">未满</option>
+                <option value="0">已满</option>
+            </select>
+            <label>状态：</label><select class="one" name="fpartition_State">
+            <option value="1">有效</option>
+            <option value="0">无效</option>
+            </select><br>
+            <label>排序值：</label><input class="one" type="text" name="fpartition_Sort">越大越靠前
+            <br>
+            <input class="btn btn-info" type="submit" value="提交"><br>
+        </form>
+    </div>
+</div>
+</body>
+</html>
